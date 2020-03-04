@@ -62,5 +62,18 @@ namespace StarControl.Infra.Data.Repository
                 return sqlConnection.QuerySingleOrDefault<Cliente>(query, new { Id = @id });
             }
         }
+
+
+        public bool HasEmail(string email)
+        {
+            using (var sqlConnection = new SqlConnection(connectionString))
+            {
+                var query = "SELECT COUNT(EMAIL) FROM CLIENTE WHERE EMAIL = @Email";
+
+                var qtd = sqlConnection.QuerySingleOrDefault<int>(query, new { Email = email });
+                
+                return qtd == 1;
+            }
+        }
     }
 }

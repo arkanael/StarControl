@@ -12,14 +12,21 @@ namespace StarControl.Business
     {
         private readonly ClienteRepository repository;
 
-        public ClienteBusiness(ClienteRepository repository)
+        public ClienteBusiness()
         {
-            this.repository = repository;
+            repository = new ClienteRepository();
         }
 
         public void Cadastrar(Cliente cliente)
         {
-            repository.Insert(cliente);
+            if (repository.HasEmail(cliente.Email))
+            {
+                throw new Exception($"O email {cliente.Email} já encontra-se cadastrado no sistema, tente outro.");
+            }
+            else
+            {
+                repository.Insert(cliente);
+            }
         }
 
         public void Atualizar(Cliente cliente)

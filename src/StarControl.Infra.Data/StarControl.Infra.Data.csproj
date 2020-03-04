@@ -51,9 +51,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\starcontrol.Entities\starcontrol.Entities.csproj">
       <Project>{A15D18F8-E962-4C52-B467-4903B21FE37C}</Project>

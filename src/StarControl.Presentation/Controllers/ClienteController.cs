@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using starcontrol.Entities;
+using StarControl.Business;
 using StarControl.Presentation.Models;
+using StarControl.Presentation.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,24 @@ namespace StarControl.Presentation.Controllers
 {
     public class ClienteController : Controller
     {
+
+        private readonly ClienteBusiness business;
+
+       
+        public ClienteController()
+        {
+            business = new ClienteBusiness();
+        }
+
+
         // GET: Cliente
         public ActionResult Cadastro()
+        {
+            return View();
+        }
+
+        // GET: Cliente
+        public ActionResult Consulta()
         {
             return View();
         }
@@ -23,7 +41,11 @@ namespace StarControl.Presentation.Controllers
             {
                 try
                 {
-                    return Json("OK");
+                    var cliente = Mapper.Map<Cliente>(model);
+
+                    business.Cadastrar(cliente);
+
+                    return Json($"Cliente {cliente.Nome} cadastrado com sucesso.");
                 }
                 catch (Exception erro)
                 {
@@ -34,7 +56,7 @@ namespace StarControl.Presentation.Controllers
             else
             {
                 Response.StatusCode = 400;
-                return Json("erro");
+                return Json(ModelStateValidation.GetErrors(ModelState));
 
             }
         }
