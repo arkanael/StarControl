@@ -12,7 +12,9 @@ namespace StarControl.Presentation.Mappings
     {
         public AutoMapperConfig()
         {
-            CreateMap<ClienteCadastroViewModel, Cliente>();
+            CreateMap<ClienteCadastroViewModel, Cliente>();   
+            
+            CreateMap<Cliente, ClienteCadastroViewModel>();
         }
     }
 }

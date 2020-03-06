@@ -35,6 +35,26 @@ namespace StarControl.Presentation.Controllers
             return View();
         }
 
+        public JsonResult ConsultarClientes()
+        {
+            try
+            {
+                var clientes = business.Obter();
+
+                var model = Mapper.Map<List<ClienteConsultaViewModel>>(clientes);
+
+                Response.StatusCode = 200;
+
+                return Json(model);
+
+            }
+            catch (Exception erro)
+            {
+                Response.StatusCode = 500;
+                return Json(erro.Message);
+            }
+        }
+
         public JsonResult CadastrarCliente(ClienteCadastroViewModel model)
         {
             if (ModelState.IsValid)

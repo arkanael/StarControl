@@ -39,14 +39,14 @@ namespace StarControl.Business
             repository.Delete(id);
         }
 
-        public void Obter()
+        public List<Cliente> Obter()
         {
-            repository.Find();
+            return repository.Find();
         }
 
-        public void Obter(int id)
+        public Cliente Obter(int id)
         {
-            repository.Find(id);
+            return repository.Find(id);
         }
     }
 }

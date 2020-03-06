@@ -7417,6 +7417,7 @@
     </Compile>
     <Compile Include="Mappings\AutoMapperConfig.cs" />
     <Compile Include="Models\ClienteCadastroViewModel.cs" />
+    <Compile Include="Models\ClienteConsultaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validations\ModelStateValidation.cs" />
   </ItemGroup>
